@@ -2,6 +2,7 @@
 package exOrd.control;
 
 import exOrd.model.Videoteca;
+import java.util.Scanner;
 
 /**
  *
@@ -10,17 +11,20 @@ import exOrd.model.Videoteca;
  *
  */
 
-public class OrderCommand implements Command{
+public class orderCommand implements Command{
     
     private final Videoteca videoteca;
 
-    public OrderCommand(Videoteca videoteca) {
+    public orderCommand(Videoteca videoteca) {
         this.videoteca = videoteca;
     }
 
     @Override
-    public void execute(int ord) {
-        videoteca.setOrd(ord);
+    public void execute() {
+        System.out.print("Introduzca la ordenacion que quiere dar a las peliculas siendo: \n"+"0: ordenacion por genero\n"+"1: Lista de mas vistas\n"+"2: lista de más valoradas\n"
+                +"3: lista de añadidas recientemente\n");
+        Scanner scanner = new Scanner(System.in);
+        videoteca.setOrd(scanner.nextInt());
     }
 
     

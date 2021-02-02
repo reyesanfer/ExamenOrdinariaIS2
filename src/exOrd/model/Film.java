@@ -21,7 +21,7 @@ public class Film implements Comparable<Film>{
     private int vistas;
     private int valoracion;
 
-    public Film(String caratula, String title, int year, String director, String actores, String genero, String calificacion, String duracion) {
+    public Film(String caratula, String title, int year, String director, String actores, String genero, String calificacion, String duracion,int vistas,int valoracion) {
         this.caratula = caratula;
         this.title = title;
         this.year = year;
@@ -30,8 +30,8 @@ public class Film implements Comparable<Film>{
         this.genero = genero;
         this.calificacion = calificacion;
         this.duracion = duracion;
-        vistas = 0;
-        valoracion = 0;
+        this.vistas = vistas;
+        this.valoracion = valoracion;
     }
     
     public void incrementVistas() {
@@ -110,7 +110,7 @@ public class Film implements Comparable<Film>{
 
     @Override
     public String toString() {
-        return getCaratula()+" || "+getTitle()+" || "+getYear()+" || "+getDirector()+" || "+getActores()+" || "+getGenero()+" || "+getCalificacion()+" || "+getDuracion();
+        return getCaratula()+" || "+getTitle()+" || "+getYear()+" || "+getDirector()+" || "+getActores()+" || "+getGenero()+" || "+getCalificacion()+" || "+getDuracion()+"\n";
     }
     
 }

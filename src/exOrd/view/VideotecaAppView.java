@@ -1,7 +1,5 @@
 package exOrd.view;
 
-import exOrd.model.Videoteca;
-
 /**
  *
  * @author FernandoSanfielReyes
@@ -11,6 +9,6 @@ import exOrd.model.Videoteca;
 
 public interface VideotecaAppView {
 
-    void display(Videoteca videoteca);
+    void display();
     
 }

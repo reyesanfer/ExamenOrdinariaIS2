@@ -9,6 +9,6 @@ package exOrd.control;
 
 public interface Command {
     
-    void execute(int ord);
+    void execute();
     
 }
