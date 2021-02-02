@@ -30,6 +30,8 @@ public class Videoteca {
     public boolean addFilm(Film film) {
         if (film != null && !films.contains(film)) {
             films.add(film);
+            addValorated(film);
+            addPlayed(film);
             addRecently(film);
             return true;
         }
@@ -72,5 +74,48 @@ public class Videoteca {
             return recentlyAdded.toString();
         }
         return "Valor de orden no permitido";
+    }
+
+    
+    /**
+     * 
+     * @param film 
+     * Este metodo se encarga de comparar las valoraciones de la pelicula que se quiere añadir y las que ya 
+     * se encuentran en la lista de las mas valoradas y en caso de que la pelicula que se quiera añadir tenga mayor
+     * valoracioon que las ya almacenadas se actualiza la lista con un maximo de 10 peliculas
+     * 
+     */
+    private void addValorated(Film film) {
+        if (mostValorated.size() >= 10) {
+            for (Film f : mostValorated) {
+                if (f.getValoracion() < film.getValoracion()) {
+                    mostValorated.remove(f);
+                    mostValorated.add(film);
+                }
+            }
+        } else {
+            mostValorated.add(film);
+        }
+    }
+
+    /**
+     * 
+     * @param film 
+     * Este metodo se encarga de comparar las vistas de la pelicula que se quiere añadir y las que ya 
+     * se encuentran en la lista de las mas vistas y en caso de que la pelicula que se quiera añadir tenga más vistas
+     * que las ya almacenadas se actualiza la lista con un maximo de 10 peliculas
+     * 
+     */
+    private void addPlayed(Film film) {
+        if (mostPlayed.size() >= 10) {
+            for (Film f : mostPlayed) {
+                if (f.getVistas() < film.getVistas()) {
+                    mostPlayed.remove(f);
+                    mostPlayed.add(film);
+                }
+            }
+        } else {
+            mostPlayed.add(film);
+        }
     }
 }
