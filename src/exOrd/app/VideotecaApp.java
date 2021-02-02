@@ -1,7 +1,7 @@
 package exOrd.app;
 
 
-//import exOrd.control.orderCommand;
+import exOrd.control.shuffleCommand;
 import exOrd.control.selectCommand;
 import exOrd.model.Film;
 import exOrd.model.Videoteca;
@@ -19,26 +19,27 @@ public class VideotecaApp implements VideotecaAppView{
 
     private Videoteca videoteca;
     private selectCommand search;
-    //private orderCommand order;
+    private shuffleCommand shuffle;
     
     public VideotecaApp() {
         videoteca = new Videoteca();
         fill(videoteca);
         search = new selectCommand(videoteca);
-        //order = new orderCommand(videoteca);
+        shuffle = new shuffleCommand(videoteca);
     }
 
     public boolean hacer() {
-        boolean flag = true;
+        boolean flag = false;
         this.display();
         System.out.println("Si desea buscar alguna pelicula en concreto escriba 'search'\n"+"Si desea cambiar el orden de las peliculas mostradas escriba 'shuffle'");
         Scanner scanner = new Scanner(System.in);
         if (scanner.nextLine().equals("search")) {
             this.search();
-        } else if (scanner.nextLine().equals("shuffle")) {
+            flag = true;
+        }
+        if (scanner.nextLine().equals("shuffle")) {
             this.shuffle();
-        } else {
-            return false;
+            flag = true;
         }
         return flag;
     }
@@ -61,7 +62,7 @@ public class VideotecaApp implements VideotecaAppView{
     }
     
     public void shuffle() {
-        //order.execute();
+        shuffle.execute();
         this.display();
     }
 
