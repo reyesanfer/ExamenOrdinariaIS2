@@ -11,11 +11,11 @@ import java.util.Scanner;
  *
  */
 
-public class selectCommand implements Command {
+public class SelectCommand implements Command {
     
     private final Videoteca videoteca;
 
-    public selectCommand(Videoteca videoteca) {
+    public SelectCommand(Videoteca videoteca) {
         this.videoteca = videoteca;
     }
     

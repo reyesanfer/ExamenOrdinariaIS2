@@ -1,8 +1,8 @@
 package exOrd.app;
 
 
-import exOrd.control.shuffleCommand;
-import exOrd.control.selectCommand;
+import exOrd.control.ShuffleCommand;
+import exOrd.control.SelectCommand;
 import exOrd.model.Film;
 import exOrd.model.Videoteca;
 import exOrd.view.VideotecaAppView;
@@ -18,14 +18,14 @@ import java.util.Scanner;
 public class VideotecaApp implements VideotecaAppView{
 
     private Videoteca videoteca;
-    private selectCommand search;
-    private shuffleCommand shuffle;
+    private SelectCommand search;
+    private ShuffleCommand shuffle;
     
     public VideotecaApp() {
         videoteca = new Videoteca();
         fill(videoteca);
-        search = new selectCommand(videoteca);
-        shuffle = new shuffleCommand(videoteca);
+        search = new SelectCommand(videoteca);
+        shuffle = new ShuffleCommand(videoteca);
     }
 
     public boolean hacer(String line, boolean flag) {

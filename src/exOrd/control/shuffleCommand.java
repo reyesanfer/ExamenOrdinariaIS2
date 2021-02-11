@@ -11,11 +11,11 @@ import java.util.Scanner;
  *
  */
 
-public class shuffleCommand implements Command{
+public class ShuffleCommand implements Command{
     
     private final Videoteca videoteca;
 
-    public shuffleCommand(Videoteca videoteca) {
+    public ShuffleCommand(Videoteca videoteca) {
         this.videoteca = videoteca;
     }
 
