@@ -28,26 +28,30 @@ public class VideotecaApp implements VideotecaAppView{
         shuffle = new shuffleCommand(videoteca);
     }
 
-    public boolean hacer() {
-        boolean flag = false;
-        this.display();
-        System.out.println("Si desea buscar alguna pelicula en concreto escriba 'search'\n"+"Si desea cambiar el orden de las peliculas mostradas escriba 'shuffle'");
-        Scanner scanner = new Scanner(System.in);
-        if (scanner.nextLine().equals("search")) {
+    public boolean hacer(String line, boolean flag) {
+        flag = false;
+        if (line.equals("search")) {
             this.search();
             flag = true;
-        }
-        if (scanner.nextLine().equals("shuffle")) {
+            return flag;
+        } else if (line.equals("shuffle")) {
             this.shuffle();
             flag = true;
+            return flag;
         }
         return flag;
     }
     
     public static void main(String[] args) {
+        VideotecaApp app = new VideotecaApp();
+        app.display();
         boolean flag = true;
         while (flag) {
-            flag = new VideotecaApp().hacer();
+            System.out.print("Si desea buscar alguna pelicula en concreto escriba 'search'\n"+"Si desea cambiar el orden de las peliculas mostradas escriba 'shuffle'\n"
+                            +"Si desea salir presione 'enter'\n");
+            Scanner scanner = new Scanner(System.in);
+            String line = scanner.nextLine();
+            flag = app.hacer(line, flag);
         }
         System.exit(0);
     }
@@ -70,7 +74,7 @@ public class VideotecaApp implements VideotecaAppView{
         videoteca.addFilm(new Film("Caratula1","titulo1",2000,"Director1","actor1, acteiz1","genero1","Todos los publicos","1:20:30",1000,5));
         videoteca.addFilm(new Film("Caratula2","titulo2",2000,"Director2","actor2, acteiz2","genero2","Todos los publicos","1:20:30",100,10));
         videoteca.addFilm(new Film("Caratula3","titulo3",2000,"Director3","actor3, acteiz3","genero3","Todos los publicos","1:20:30",2000,20));
-        videoteca.addFilm(new Film("Caratula4","titulo4",2000,"Director4","actor4, acteiz4","genero4","Todos los publicos","1:20:30",10,1));
+        videoteca.addFilm(new Film("Caratula4","titulo4",2000,"Director4","actor4, acteiz4","genero4","Todos los publicos","1:20:30",10,101));
         videoteca.addFilm(new Film("Caratula5","titulo5",2000,"Director5","actor5, acteiz5","genero5","Todos los publicos","1:20:30",200,6));
         videoteca.addFilm(new Film("Caratula6","titulo6",2000,"Director6","actor6, acteiz6","genero6","Todos los publicos","1:20:30",30,3));
         videoteca.addFilm(new Film("Caratula7","titulo7",2000,"Director7","actor7, acteiz7","genero7","Todos los publicos","1:20:30",500,16));

@@ -42,6 +42,7 @@ public class Videoteca {
         for (Film film : films) {
             if (film.getTitle().equals(title)) {
                 System.out.println(film.toString());
+                film.incrementVistas();
                 return film;
             }
         }
@@ -98,13 +99,16 @@ public class Videoteca {
     private void addValorated(Film film) {
         if (mostValorated.size() >= 10) {
             for (int i = 0; i < mostValorated.size(); i++) {
-                if (mostValorated.get(i).getValoracion() < film.getValoracion()) {
+                if (mostValorated.get(i).getValoracion() < film.getValoracion() && !film.equals(mostValorated.get(i))) {
                     mostValorated.remove(i);
                     mostValorated.add(film);
+                    break;
                 }
             }
         } else {
-            mostValorated.add(film);
+            if (!mostValorated.contains(film)){
+                mostValorated.add(film);
+            }
         }
     }
 
@@ -119,13 +123,16 @@ public class Videoteca {
     private void addPlayed(Film film) {
         if (mostPlayed.size() >= 10) {
             for (int i = 0; i < mostPlayed.size(); i++) {
-                if (mostPlayed.get(i).getValoracion() < film.getValoracion()) {
+                if (mostPlayed.get(i).getVistas() < film.getVistas() && !film.equals(mostPlayed.get(i))) {
                     mostPlayed.remove(i);
                     mostPlayed.add(film);
+                    break;
                 }
             }
         } else {
-            mostPlayed.add(film);
+            if (!mostPlayed.contains(film)) {
+                mostPlayed.add(film);
+            }
         }
     }
 }
